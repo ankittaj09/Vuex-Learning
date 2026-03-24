@@ -17,10 +17,11 @@
 
 export default {
   name: 'product1',
-  props:['product'],
-  components: {
-    
+  computed:{
+    product(){
+    return this.$store.state.product;
   }
+}
 }
 </script>
 
