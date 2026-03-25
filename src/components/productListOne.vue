@@ -7,7 +7,7 @@
         <span class="price"> ₹ {{ item.price }}</span>
       </li>
     </ul>
-    <button @click="reducePrice">Reduce Price</button>
+    <button @click="reducePrice(5)">Reduce Price</button>
   </div>
 </template>
 
@@ -25,11 +25,12 @@ export default {
     }
   },
   methods:{
-    reducePrice(){
-      // return this.$store.state.product.forEach(product => {
+    reducePrice(amount){
+      // this.$store.state.product.forEach(product => {
       //   product.price -= 1;        
       // }); in strict mode true we cannot do mutation data on function calling inside a component
-      return this.$store.commit('reducePrice');
+      // return this.$store.commit('reducePrice');
+      this.$store.dispatch('reducePrice',amount);
     }
   }
 }
