@@ -12,7 +12,8 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   name: 'product1',
   
@@ -20,18 +21,15 @@ export default {
     product(){
     return this.$store.state.product;
   },
-  saleProduct(){
-      return this.$store.getters.saleProduct;
-    }
+  ...mapGetters([
+    'saleProduct'
+  ])
   },
   methods:{
-    reducePrice(amount){
-      // this.$store.state.product.forEach(product => {
-      //   product.price -= 1;        
-      // }); in strict mode true we cannot do mutation data on function calling inside a component
-      // return this.$store.commit('reducePrice');
-      this.$store.dispatch('reducePrice',amount);
-    }
+    ...mapActions([
+      'reducePrice'
+    ])
+    
   }
 }
 </script>
